@@ -1,1 +1,1 @@
-# python-practice
+# Python復習記録
