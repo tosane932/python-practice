@@ -1,6 +1,6 @@
 # test_delivery.py
 import unittest
-from delivery import calculate_delivery_time
+from logic import calculate_delivery_time
 
 class TestDelivery(unittest.TestCase):
     # 正常なケース
