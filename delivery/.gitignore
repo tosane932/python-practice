@@ -1,0 +1,3 @@
+# .gitignore というファイルを作る
+__pycache__/
+*.pyc
