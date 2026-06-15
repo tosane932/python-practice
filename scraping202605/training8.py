@@ -6,12 +6,10 @@ import time
 from datetime import datetime
 import urllib.parse
 
-# --- 設定：検索したいキーワード ---
-search_keywords = ["青切符", "バス事故", "違反", "自転車", "法改正", "ながらスマホ", "あおり運転", "実質賃金", "春闘 回答", "賃上げ 見通し", "最低賃金 改定", "議員歳費 削減", "身を切る改革", "文通費 改正", "保育園 保育士", "育児放棄", "ライドシェア", "物流の2024年問題", "自動運転", "電気代 値上げ", "投資信託", "AIスマホ", "経済"]
-
 # keywords.txt から読み込む例
 with open("keywords.txt", encoding="utf-8") as f:
     search_keywords = [line.strip() for line in f if line.strip()]
+
 
 def get_google_news(keyword):
     # Googleニュースの検索結果をRSS形式で取得するURL
