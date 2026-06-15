@@ -51,24 +51,24 @@ if __name__ == "__main__":
             all_results.extend(results)
             time.sleep(1)
 
-if all_results:
-    df_new = pd.DataFrame(all_results)
-    file_name = "google_research_history.xlsx"
+        if all_results:
+            df_new = pd.DataFrame(all_results)
+            file_name = "google_research_history.xlsx"
 
-    if os.path.exists(file_name):
-        df_old = pd.read_excel(file_name)
-        df_new_unique = df_new[~df_new["URL"].isin(df_old["URL"])]
-        if not df_new_unique.empty:
-            df_final = pd.concat([df_old, df_new_unique], ignore_index=True)
-            print(f"新着を {len(df_new_unique)} 件追加。")
+            if os.path.exists(file_name):
+                df_old = pd.read_excel(file_name)
+                df_new_unique = df_new[~df_new["URL"].isin(df_old["URL"])]
+                if not df_new_unique.empty:
+                    df_final = pd.concat([df_old, df_new_unique], ignore_index=True)
+                    print(f"新着を {len(df_new_unique)} 件追加。")
+                else:
+                    df_final = df_old
+                    print("新しい記事はありません。")
+            else:
+                df_final = df_new
+                print(f"新しいファイル '{file_name}' を作成しました。")
+
+            df_final.to_excel(file_name, index=False)
+            print(f"現在の蓄積数：合計 {len(df_final)} 件")
         else:
-            df_final = df_old
-            print("新しい記事はありません。")
-    else:
-        df_final = df_new
-        print(f"新しいファイル '{file_name}' を作成しました。")
-
-    df_final.to_excel(file_name, index=False)
-    print(f"現在の蓄積数：合計 {len(df_final)} 件")
-else:
-    print("ニュースが見つかりませんでした。")
+            print("ニュースが見つかりませんでした。")
