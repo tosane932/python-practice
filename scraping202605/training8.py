@@ -27,9 +27,9 @@ def get_google_news(keyword):
 
     # RSS内の各記事は <item> タグで囲まれています
     for item in soup.find_all('item'):
-       title = item.title.text if item.title else "タイトルなし"
-       link = item.link.text if item.link else ""
-       pub_date = item.pubDate.text if item.pubDate else ""
+        title = item.title.text if item.title else "タイトルなし"
+        link = item.link.text if item.link else ""
+        pub_date = item.pubDate.text if item.pubDate else ""
         
         found_news.append({
             "取得日時": current_time,
@@ -43,13 +43,13 @@ def get_google_news(keyword):
 
 # --- メイン処理 ---
 if __name__ == "__main__":
- all_results = []
- for kw in search_keywords:
-     print(f"Googleニュースで「{kw}」を検索中...")
-     results = get_google_news(kw)
-     print(f"  -> {len(results)} 件の最新記事を捕捉")
-     all_results.extend(results)
-     time.sleep(1)
+        all_results = []
+        for kw in search_keywords:
+            print(f"Googleニュースで「{kw}」を検索中...")
+            results = get_google_news(kw)
+            print(f"  -> {len(results)} 件の最新記事を捕捉")
+        all_results.extend(results)
+        time.sleep(1)
 
 if all_results:
     df_new = pd.DataFrame(all_results)
