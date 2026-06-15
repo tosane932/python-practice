@@ -28,8 +28,8 @@ def get_google_news(keyword):
     # RSS内の各記事は <item> タグで囲まれています
     for item in soup.find_all('item'):
        title = item.title.text if item.title else "タイトルなし"
-link = item.link.text if item.link else ""
-pub_date = item.pubDate.text if item.pubDate else ""
+       link = item.link.text if item.link else ""
+       pub_date = item.pubDate.text if item.pubDate else ""
         
         found_news.append({
             "取得日時": current_time,
