@@ -48,8 +48,8 @@ if __name__ == "__main__":
             print(f"Googleニュースで「{kw}」を検索中...")
             results = get_google_news(kw)
             print(f"  -> {len(results)} 件の最新記事を捕捉")
-        all_results.extend(results)
-        time.sleep(1)
+            all_results.extend(results)
+            time.sleep(1)
 
 if all_results:
     df_new = pd.DataFrame(all_results)
